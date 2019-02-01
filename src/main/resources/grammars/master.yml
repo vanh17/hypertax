@@ -1,0 +1,9 @@
+
+rules:
+  - import: org/clulab/wm/eidos/english/grammars/lexiconner.yml
+        vars:
+          rulepriority: "1"
+
+  - import: grammars/hearst.yml
+    vars:
+      rulepriority: "2"

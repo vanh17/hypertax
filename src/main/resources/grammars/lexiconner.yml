@@ -1,0 +1,7 @@
+rules:
+  - name: property-lexiconner
+    label: Entity
+    priority: ${rulepriority}
+    type: token
+    pattern: |
+      [entity="B-Entity"] [entity="I-Entity"]*

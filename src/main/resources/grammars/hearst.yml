@@ -1,0 +1,6 @@
+rules:
+  - name: hearst_pattern
+    label: Hypernym
+    priority: ${rulepriority}
+    type: token
+    pattern: |
