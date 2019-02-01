@@ -1,29 +1,65 @@
+import java.io.File
+
 import org.clulab.odin.{ExtractorEngine, Mention}
-import org.clulab.processors.{Document, Processor, Sentence}
+import org.clulab.processors.{Document, Sentence}
 import org.clulab.sequences.LexiconNER
 import org.clulab.utils.Serializer
 import ai.lum.common.FileUtils._
+
 
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
 object makeDocument {
-  def main(args: Array[String]): Unit = {
-    val lexiconfile = args(0)
-    //    val foldername = args(1)
-    val lexicon_ner = LexiconNER(Seq(lexiconfile), caseInsensitiveMatching = true)
 
-    val filename = "/Users/zheng/Downloads/UMBC_webbase_all/mbta.com_mtu.pages_10.possf2"
-    //    val docs = parseDoc(filename, lexicon_ner)
-    //    for (docAndIndex <- docs.zipWithIndex) {
-    //      val doc = docAndIndex._1
-    //      val index = docAndIndex._2
-    //      val serName = s"${filename}_${index}.serialized"
-    //      Serializer.save(doc, serName)
-    //    }
+  val rules =
+    """
+      |- name: property-lexiconner
+      |  label: Entity
+      |  priority: 1
+      |  type: token
+      |  pattern: |
+      |    [entity="B-Entity"] [entity="I-Entity"]*
+      |
+      |- name: hearst_pattern
+      |  label: IsA
+      |  priority: 2
+      |  type: token
+      |  pattern: |
+      |    @hypernym: Entity such as @hyponym: Entity (',' (and|or)? @hyponym: Entity)*
+    """.stripMargin
+
+  def main(args: Array[String]): Unit = {
+    val lexiconfile = "Entity.txt"
+    val lexicon_ner = LexiconNER(Seq(lexiconfile), caseInsensitiveMatching = true)
+    val dir = new File(args(0))
+
+    for (filename <- dir.listFilesByWildcard(".possf2")) {
+      val docs = parseDoc(filename, lexicon_ner)
+
+      val extractor_engine = ExtractorEngine(rules)
+      for (doc <- docs) {
+        val mentions = extractor_engine.extractFrom(doc)
+        for {
+          m <- mentions
+          if m matches "IsA"
+          rule = m.foundBy
+          hypernym <- m.arguments("hypernym")
+          hyponym <- m.arguments("hyponym")
+        } {
+          println(s"${hypernym.words.mkString(" ")}\t${hyponym.words.mkString(" ")}\t$rule\t${m.words.mkString(" ")}\n")
+        }
+      }
+    }
+//        for (docAndIndex <- docs.zipWithIndex) {
+//          val doc = docAndIndex._1
+//          val index = docAndIndex._2
+//          val serName = s"${filename}_${index}.serialized"
+//          Serializer.save(doc, serName)
+//        }
 
   }
-  def parseDoc(file: String, lex: LexiconNER): Array[Document] = {
+  def parseDoc(file: File, lex: LexiconNER): Array[Document] = {
     //  val a = new Document()
     val documents = new ArrayBuffer[Document]()
     var docSentences = new ArrayBuffer[Sentence]()

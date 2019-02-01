@@ -1,6 +1,7 @@
 rules:
   - name: hearst_pattern
-    label: Hypernym
+    label: IsA
     priority: ${rulepriority}
     type: token
     pattern: |
+      @hypernym: Entity such as @hyponym: Entity (',' (and|or)? @hyponym: Entity)*

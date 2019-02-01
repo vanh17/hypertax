@@ -1,9 +1,26 @@
+#
+#rules:
+#  - import: grammars/lexiconner.yml
+#        vars:
+#          rulepriority: "1"
+#
+#  - import: grammars/hearst.yml
+#    vars:
+#      rulepriority: "2"
 
-rules:
-  - import: org/clulab/wm/eidos/english/grammars/lexiconner.yml
-        vars:
-          rulepriority: "1"
 
-  - import: grammars/hearst.yml
-    vars:
-      rulepriority: "2"
+#########
+
+- name: property-lexiconner
+  label: Entity
+  priority: 1
+  type: token
+  pattern: |
+    [entity="B-Entity"] [entity="I-Entity"]*
+
+- name: hearst_pattern
+  label: IsA
+  priority: 2
+  type: token
+  pattern: |
+    @hypernym: Entity such as @hyponym: Entity (',' (and|or)? @hyponym: Entity)*
