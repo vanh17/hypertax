@@ -21,7 +21,7 @@ object makeDocument {
       |  pattern: |
       |    [entity="B-Entity"] [entity="I-Entity"]*
       |
-      |- name: hearst_pattern
+      |- name: hearst_pattern_such_as
       |  label: IsA
       |  priority: 2
       |  type: token
