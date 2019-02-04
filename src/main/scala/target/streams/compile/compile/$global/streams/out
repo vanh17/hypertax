@@ -1,0 +1,61 @@
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:3:12: object clulab is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.clulab.odin.{ExtractorEngine, Mention}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:4:12: object clulab is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.clulab.processors.{Document, Sentence}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:5:12: object clulab is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.clulab.sequences.LexiconNER[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:6:12: object clulab is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.clulab.utils.Serializer[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:7:8: not found: object ai[0m
+[0m[[0m[31merror[0m] [0m[0mimport ai.lum.common.FileUtils._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:34:23: not found: value LexiconNER[0m
+[0m[[0m[31merror[0m] [0m[0m    val lexicon_ner = LexiconNER(Seq(lexiconfile), caseInsensitiveMatching = true)[0m
+[0m[[0m[31merror[0m] [0m[0m                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:34:52: not found: value caseInsensitiveMatching[0m
+[0m[[0m[31merror[0m] [0m[0m    val lexicon_ner = LexiconNER(Seq(lexiconfile), caseInsensitiveMatching = true)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:37:26: value listFilesByWildcard is not a member of java.io.File[0m
+[0m[[0m[31merror[0m] [0m[0m    for (filename <- dir.listFilesByWildcard("*.possf2")) {[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:62:52: not found: type Document[0m
+[0m[[0m[31merror[0m] [0m[0m  def parseDoc(file: File, lex: LexiconNER): Array[Document] = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:62:33: not found: type LexiconNER[0m
+[0m[[0m[31merror[0m] [0m[0m  def parseDoc(file: File, lex: LexiconNER): Array[Document] = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:40:30: not found: value ExtractorEngine[0m
+[0m[[0m[31merror[0m] [0m[0m      val extractor_engine = ExtractorEngine(rules)[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:41:19: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : docs.type (with underlying type Array[<error>])[0m
+[0m[[0m[31merror[0m] [0m[0m required: ?{def foreach: ?}[0m
+[0m[[0m[31merror[0m] [0m[0mNote that implicit conversions are not applicable because they are ambiguous:[0m
+[0m[[0m[31merror[0m] [0m[0m both method booleanArrayOps in object Predef of type (xs: Array[Boolean])scala.collection.mutable.ArrayOps.ofBoolean[0m
+[0m[[0m[31merror[0m] [0m[0m and method byteArrayOps in object Predef of type (xs: Array[Byte])scala.collection.mutable.ArrayOps.ofByte[0m
+[0m[[0m[31merror[0m] [0m[0m are possible conversion functions from docs.type to ?{def foreach: ?}[0m
+[0m[[0m[31merror[0m] [0m[0m      for (doc <- docs) {[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:64:37: not found: type Document[0m
+[0m[[0m[31merror[0m] [0m[0m    val documents = new ArrayBuffer[Document]()[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:65:40: not found: type Sentence[0m
+[0m[[0m[31merror[0m] [0m[0m    var docSentences = new ArrayBuffer[Sentence]()[0m
+[0m[[0m[31merror[0m] [0m[0m                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:77:32: not found: type Sentence[0m
+[0m[[0m[31merror[0m] [0m[0m        val procSentence = new Sentence(words, Array.fill[Int](numWords)(0), Array.fill[Int](numWords)(0), words)[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:83:25: not found: type Document[0m
+[0m[[0m[31merror[0m] [0m[0m          val doc = new Document(docSentences.toArray)[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:85:42: not found: type Sentence[0m
+[0m[[0m[31merror[0m] [0m[0m          docSentences = new ArrayBuffer[Sentence]()[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/net/kate/storage/work/vnhh/hypertax/src/main/scala/makeDocument.scala:90:19: not found: type Document[0m
+[0m[[0m[31merror[0m] [0m[0m    val doc = new Document(docSentences.toArray)[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m18 errors found[0m
